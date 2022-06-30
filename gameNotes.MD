@@ -12,8 +12,6 @@ Ace: 1 or 11
 - Going over 21 is a bust and you lose
 - The dealer has to hit if his cards equal 16 or less and add another card to his deck. They have to stay if their two cards equals seventeen or more
 
-//========================
-
 - card object in an array
 
 - try to put a card on the page
