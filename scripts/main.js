@@ -1,15 +1,6 @@
 /*
  PSEUDO CODE/NOTES:
 
- - player 1 is dealt 2 cards up at the start. Then, after that, the dealer is given 2 cards and one of them is facing down
- if (player clicks deal button) {
-    show 2 cards in their deck
-    dealer shows 2 cards, one up and one with the back showing
- }
-
- - When the player clicks hit, the player is given another card next to their other cards
- element.onclick = add another card to their deck
-
  - When the player clicks stay, the dealer gets their turn and flips up their card. If the dealer's cards equal 16 or less, they have to add a card to the deck. If their two cards equal 17 or less, they have to stay
 
  - If the player's cards add up to over 21, then it is a bust and it's game over
@@ -23,36 +14,42 @@ Ace: 1 or 11
 //   // Execute after page load
 // });
 
-//====== MAKING THE DECK ======
+//====== MAKING THE DECK ====== COMMENT
 const deck = [];
 const suits = ["hearts", "spades", "clubs", "diamonds"];
 const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "ace", "jack", "king", "queen"];
+// const points = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 const makeDeck = (rank, suit) => {
   const card = {
     rank: rank,
     suit: suit,
-    pointValue: rank > 10 ? 10 : rank,
+    // pointValue: rank > 10 ? 10 : rank,
+    pointValue: 1,
+    //TODO
   };
+  //Pushes the card object inside of the deck array
   deck.push(card);
 };
+//Iterate through the items in suits and ranks arrays and pass them into makeDeck() to assign the values to their keys, making 52 cards
 for (let suit of suits) {
   for (const rank of ranks) {
     makeDeck(rank, suit);
   }
 }
+// console.log(deck[card.pointValue]); BUG
 
 console.log(deck);
 
-//====== SHUFFLE DECK ======
-//logic: sort through all the cards in the deck list and put them in random order
+//====== SHUFFLE DECK ====== COMMENT
+//logic: sort through all the cards in the deck array and put them in random order
 const shuffleDeck = () => {
   deck.sort(() => Math.random() - 0.5);
 };
 
 shuffleDeck();
 
-// ====== HIT BUTTON ======
+// ====== HIT BUTTON ====== COMMENT
 const hit = () => {
   //Creates the card images
   const cardImgHit = document.createElement("img");
@@ -70,11 +67,16 @@ const hit = () => {
   //Appends the random images onto the deck displays
   document.getElementById("player-hand").append(cardImgHit);
   document.getElementById("dealer-hand").append(cardImgHit2);
+
+  // ======= POINTS SHOW WHEN CARDS ARE PICKED ======
 };
 
+//Hit button even listener
 document.getElementById("hit-button").addEventListener("click", hit);
 
-// ====== DEAL BUTTON ======
+//==========================
+
+// ====== DEAL BUTTON ====== COMMENT
 //When the "Deal" button is clicked, deal 4 times. Once to the player, once to the dealer, then the player and then to the dealer.
 const deal = () => {
   //Creates the card images
