@@ -26,7 +26,7 @@ Ace: 1 or 11
 //====== MAKING THE DECK ======
 const deck = [];
 const suits = ["hearts", "spades", "clubs", "diamonds"];
-const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+const ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "ace", "jack", "king", "queen"];
 
 const makeDeck = (rank, suit) => {
   const card = {
@@ -45,7 +45,7 @@ for (let suit of suits) {
 console.log(deck);
 
 //====== SHUFFLE DECK ======
-//logic: sort through all the cards in the deck list and put them
+//logic: sort through all the cards in the deck list and put them in random order
 const shuffleDeck = () => {
   deck.sort(() => Math.random() - 0.5);
 };
@@ -54,14 +54,20 @@ shuffleDeck();
 
 // ====== HIT BUTTON ======
 const hit = () => {
+  //Creates the card images
   const cardImgHit = document.createElement("img");
   const cardImgHit2 = document.createElement("img");
 
+  //Randomly sorts the ranks and suits arrays
   ranks.sort(() => Math.random() - 0.5);
+  const suitRandPlayer = suits[Math.floor(Math.random() * suits.length)];
+  const suitRandDealer = suits[Math.floor(Math.random() * suits.length)];
 
-  cardImgHit.src = `images/${ranks[0]}_of_${suits[0]}.png`;
-  cardImgHit2.src = "images/3_of_clubs.png";
+  //Randomizes the sources of the images
+  cardImgHit.src = `images/${ranks[0]}_of_${suitRandPlayer}.png`;
+  cardImgHit2.src = `images/${ranks[1]}_of_${suitRandDealer}.png`;
 
+  //Appends the random images onto the deck displays
   document.getElementById("player-hand").append(cardImgHit);
   document.getElementById("dealer-hand").append(cardImgHit2);
 };
@@ -71,18 +77,28 @@ document.getElementById("hit-button").addEventListener("click", hit);
 // ====== DEAL BUTTON ======
 //When the "Deal" button is clicked, deal 4 times. Once to the player, once to the dealer, then the player and then to the dealer.
 const deal = () => {
-  const cardImgDeal = document.createElement("img");
+  //Creates the card images
+  const cardImgDealer = document.createElement("img");
   const cardImgDealPlayer = document.createElement("img");
   const cardImgDealPlayer2 = document.createElement("img");
 
-  cardImgDeal.src = "images/2_of_diamonds.png";
-  cardImgDealPlayer.src = "images/2_of_hearts.png";
-  cardImgDealPlayer2.src = "images/2_of_spades.png";
+  //Randomly sorts the arrays of the ranks and suits for each card image
+  ranks.sort(() => Math.random() - 0.5);
+  const suitRandPlayer = suits[Math.floor(Math.random() * suits.length)];
+  const suitRandPlayer2 = suits[Math.floor(Math.random() * suits.length)];
+  const suitRandDealer = suits[Math.floor(Math.random() * suits.length)];
 
+  // Changes the sources of the images at random so cards appear randomly
+  cardImgDealer.src = `images/${ranks[2]}_of_${suitRandDealer}.png`;
+  cardImgDealPlayer.src = `images/${ranks[1]}_of_${suitRandPlayer}.png`;
+  cardImgDealPlayer2.src = `images/${ranks[0]}_of_${suitRandPlayer2}.png`;
+
+  //Appends the images to the div dealer-hand and player-hand to show up when the deal button is clicked
   document
     .getElementById("player-hand")
     .append(cardImgDealPlayer, cardImgDealPlayer2);
-  document.getElementById("dealer-hand").append(cardImgDeal);
+  document.getElementById("dealer-hand").append(cardImgDealer);
 };
 
+//The deal button event listener
 document.getElementById("deal-button").addEventListener("click", deal);
