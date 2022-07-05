@@ -95,7 +95,7 @@ window.addEventListener("DOMContentLoaded", () => {
     return cardImg;
   };
 
-  // ====== APPENDING IMAGES TO HANDS, APPENDING SCORES TO DEALER AND PLAYER ON======
+  // ====== APPENDING IMAGES TO HANDS, APPENDING SCORES TO DEALER AND PLAYER ON ======
   const appendToDisplay = () => {
     //Keeps more cards from popping up after hitting stand button
     playerHandGrab.innerHTML = "";
