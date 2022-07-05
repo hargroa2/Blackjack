@@ -4,17 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blackjack</title>
-    <script defer src="scripts/main.js"></script>
+    <!-- <script defer src="scripts/main.js"></script> -->
+    <script defer src="scripts/app.js"></script>
     <link defer rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Blackjack</h1>
-    <div class="message-box" id="messages"></div>
+    <h1>
+      <span class="fast-flicker">B</span>lack<span class="flicker">j</span>ack
+    </h1>
+    <p>Welcome to Blackjack! Press the 'Deal' button below to begin.</p>
     <div class="table">
       <div class="player">
         <label class="player-name"
           >Dealer:
-          <span id="dealer-points" class="points">pointsDealer</span>
+          <span id="dealer-points" class="points"></span>
         </label>
         <div id="dealer-hand" class="hand">
           <!-- Dealer Hand -->
@@ -24,17 +27,20 @@
       <div class="player">
         <label class="player-name"
           >Player:
-          <span id="player-points" class="points">pointsPlayer</span>
+          <span id="player-points" class="points"></span>
         </label>
         <div id="player-hand" class="hand">
           <!-- Player Hand -->
         </div>
       </div>
 
+      <div class="message-box" id="messages"></div>
+
       <div class="buttons">
         <button id="deal-button" type="button">Deal</button>
         <button id="hit-button" type="button">Hit</button>
         <button id="stand-button" type="button">Stand</button>
+        <button id="reset-button" type="button">Reset</button>
       </div>
     </div>
   </body>
