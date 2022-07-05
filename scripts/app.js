@@ -97,9 +97,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // ====== APPENDING IMAGES TO HANDS, APPENDING SCORES TO DEALER AND PLAYER ======
   const appendToDisplay = () => {
-    //Keeps more cards from popping up after hitting stand button
-    playerHandGrab.innerHTML = "";
     //puts card currently in playerHand array into player-hand on page
+    playerHandGrab.innerHTML = "";
     for (let i = 0; i < playerHand.length; i++) {
       const card = playerHand[i];
       const cardInDeckPlayer = imageSources(card);
